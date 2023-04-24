@@ -1,7 +1,17 @@
 import random
-for i in range(30):
-    data = ""
-    for j in range(9):
-        data += "%d\t" % random.randint(21,31)
-    data += "%d" % random.randint(21,31)
-    print data
+
+SEED = 2225
+TOTAL = 2000
+TEST = 0.05
+N_FOLDS = 100
+
+random.seed(SEED)
+
+for i in range(N_FOLDS):
+    data = []
+    while len(data) != int(TOTAL*TEST):
+        sample =  str(random.randint(0,TOTAL-1))
+        if sample in data:
+            continue
+        data += [sample]
+    print('\t'.join(data))

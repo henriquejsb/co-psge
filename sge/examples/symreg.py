@@ -1,7 +1,7 @@
 from cmath import isnan
 import numpy as np
 import math
-from sge.utilities.protected_math import _log_, _div_, _exp_, _inv_, _sqrt_, protdiv
+from sge.utilities.protected_math import _log_, _div_, _exp_, _inv_, _sqrt_, protdiv, _sin_, _cos_
 
 
 def drange(start, stop, step):

@@ -92,7 +92,7 @@ def evolutionary_algorithm(evaluation_function=None, parameters_file=None):
         # logger saves the grammar of the best individual
         
         logger.evolution_progress(it, population)
-
+        
         new_population = population[:params['ELITISM']]
         while len(new_population) < params['POPSIZE']:
             if np.random.uniform() < params['PROB_CROSSOVER']:

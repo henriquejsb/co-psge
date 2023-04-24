@@ -1,5 +1,10 @@
-from math import log, exp, sqrt
+from math import log, exp, sqrt, cos, sin
 
+def _cos_(x):
+    return cos(x)
+
+def _sin_(x):
+    return sin(x)
 
 def _log_(x):
     if x <= 0: return 0

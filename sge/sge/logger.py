@@ -17,16 +17,21 @@ def evolution_progress(generation, pop):
     save_progress_to_file(data)
     if generation % params['SAVE_STEP'] == 0:
         save_step(generation, pop)
-
+    save_best(pop)
 
 def save_progress_to_file(data):
     with open('%s/run_%d/progress_report.csv' % (params['EXPERIMENT_NAME'], params['RUN']), 'a') as f:
         f.write(data + '\n')
 
 
+
 def save_step(generation, population):
     c = json.dumps(population, cls=NumpyEncoder)
     open('%s/run_%d/iteration_%d.json' % (params['EXPERIMENT_NAME'], params['RUN'], generation), 'a').write(c)
+
+def save_best(population):
+    c = json.dumps(population[0],cls=NumpyEncoder)
+    open('%s/run_%d/best.json' % (params['EXPERIMENT_NAME'], params['RUN']), 'w').write(c)
 
 
 def save_parameters():
