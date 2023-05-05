@@ -231,10 +231,27 @@ class Grammar:
             output = self.python_filter(output)
         return output, max_depth
 
-    def _recursive_mapping(self, mapping_rules, positions_to_map, current_sym, current_depth, output, gram):
+
+    def map_number(self, number_genotype, codon):
+        _type,lower,upper = number_genotype[1:-1].split(',')
+        lower = float(lower)
+        upper = float(upper)
+        number = round(codon * (upper-lower) + lower,5)
+        if _type == 'int':
+            number = round(number)
+        return str(number)
+
+        
+    def _recursive_mapping(self, mapping_rules, positions_to_map, current_sym, current_depth, output, gram, prev_codon=None):
         depths = [current_depth]
         if current_sym[1] == self.T:
-            output.append(current_sym[0])
+            if '[' == current_sym[0][0]:
+                #codon = mapping_rules[current_sym_pos][positions_to_map[current_sym_pos]][1]
+                #print("HEY!", current_sym[0], prev_codon)
+                output.append(self.map_number(current_sym[0], prev_codon))
+                #cunu
+            else:
+                output.append(current_sym[0])
         else:
             current_sym_pos = self.ordered_non_terminals.index(current_sym[0])
             choices = self.grammar[current_sym[0]]
@@ -296,7 +313,7 @@ class Grammar:
             next_to_expand = choices[current_production]
             for next_sym in next_to_expand:
                 depths.append(
-                    self._recursive_mapping(mapping_rules, positions_to_map, next_sym, current_depth + 1, output, gram))
+                    self._recursive_mapping(mapping_rules, positions_to_map, next_sym, current_depth + 1, output, gram, prev_codon=codon))
         return max(depths)
 
     def get_non_recursive_productions(self, gram, symbol):
