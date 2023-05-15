@@ -1,0 +1,5 @@
+<expr> ::= <expr1> | <var> | <expr2> | <number>
+<expr1> ::= _sin_(<expr>) | _cos_(<expr>) | _exp_(<expr>) | _log_(<expr>) | _inv_(<expr>)
+<expr2> ::= (<expr> - <expr>) | (<expr> + <expr>) | (<expr> * <expr>) | (<expr> / <expr>)
+<var> ::= x[0]|x[1]|x[2]|x[3]|x[4]|x[5]|x[6]|x[7]|x[8]
+<number> ::= [float,0,10]

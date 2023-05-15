@@ -1,0 +1,5 @@
+<start> ::= <expr>
+<expr> ::= <expr><op><expr>|(<expr><op><expr>)|<var>|<number>
+<op> ::= +|-|*|\eb_div_\eb
+<var> ::= x[0]|x[1]|x[2]|x[3]|x[4]|x[5]|x[6]|x[7]|x[8]
+<number> ::= [float,0,10]

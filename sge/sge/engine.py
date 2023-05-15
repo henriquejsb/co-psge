@@ -30,6 +30,8 @@ def evaluate(ind, eval_func):
     # the grammar of the individual is used in the mapping
     phen, tree_depth = grammar.mapping(ind['genotype'], ind['pcfg'], mapping_values)
     quality, other_info = eval_func.evaluate(phen)
+    if quality == None or np.isnan(quality):
+        quality = 999999999
     ind['phenotype'] = phen
     ind['fitness'] = quality
     ind['other_info'] = other_info

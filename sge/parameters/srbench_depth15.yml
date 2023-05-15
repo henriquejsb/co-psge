@@ -1,0 +1,15 @@
+POPSIZE: 1000
+GENERATIONS: 200
+ELITISM: 100                   # number of individuals that survive
+PROB_CROSSOVER: 0.9
+PROB_MUTATION: 0.1
+TSIZE: 3
+GRAMMAR: 'grammars/srbench_grammar.pybnf'
+EXPERIMENT_NAME: 'srbench/dataset1/depth15/'
+INCLUDE_GENOTYPE: True
+SAVE_STEP: 200
+VERBOSE: True
+MIN_TREE_DEPTH: 15
+MAX_TREE_DEPTH: 15
+NORMAL_DIST_SD: 0.5
+PROB_MUTATION_GRAMMAR: 0.05

@@ -73,7 +73,7 @@ class SRBench():
                 rrse_a_b = mse = mse_a_b = self.invalid_fitness
                 b = a = None
             
-        except (OverflowError, ValueError) as e:
+        except (OverflowError, ValueError, RecursionError) as e:
             rrse_a_b = mse_a_b = mse = self.invalid_fitness
             b = a = None
         return mse, rrse_a_b, mse_a_b
